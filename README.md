@@ -7,7 +7,7 @@
 Implementation artifacts for **Data-X-House (DX House)**: A comprehensive, unified data management architecture that combines data lake and data warehouse capabilities for on-premise big data platforms in highly regulated sectors.
 
 > **Associated Publication:**  
-> Mekled, M.H., Hassanein, E.E., & Mohy, N.N. (2024). Data-X-House: A Unified Lakehouse Architecture for On-Premise Big Data Platforms in Regulated Sectors. *Journal of Big Data* (Under Review).
+> Mekled, M.H. (2025). Data-X-House: A Novel Unified Data Management Architecture Based on DLAF. *Journal of Big Data* (Under Review).
 
 ---
 
@@ -228,8 +228,8 @@ If you use DX House in your research, please cite:
 
 ```bibtex
 @article{mekled2024dxhouse,
-  title={Data-X-House: A Unified Lakehouse Architecture for On-Premise Big Data Platforms in Regulated Sectors},
-  author={Mekled, Mahmoud Hamam and Hassanein, Ehab Ezzat and Mohy, Noha Nagy},
+  title={Data-X-House: A Novel Unified Data Management Architecture Based on DLAF},
+  author={Mekled, Mahmoud Hamam},
   journal={Journal of Big Data},
   year={2025},
   publisher={Springer Nature},
@@ -248,12 +248,8 @@ Apache License 2.0 - see [LICENSE](LICENSE) file for details.
 ## Contact
 
 **Mahmoud Hamam Mekled**  
-PhD Candidate, Information Systems  
+MSc Candidate, Information Systems  
 Cairo University, Egypt
-
-**Supervisors:**
-- Prof. Ehab Ezzat Hassanein
-- Dr. Noha Nagy Mohy
 
 ---
 

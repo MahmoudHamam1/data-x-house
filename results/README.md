@@ -64,11 +64,12 @@ If you use this data, please cite:
 
 ```bibtex
 @article{mekled2024dxhouse,
-  title={Data-X-House: A Unified Lakehouse Architecture for On-Premise Big Data Platforms in Regulated Sectors},
-  author={Mekled, Mahmoud Hamam and Hassanein, Ehab Ezzat and Mohy, Noha Nagy},
+  title={Data-X-House: A Novel Unified Data Management Architecture Based on DLAF},
+  author={Mekled, Mahmoud Hamam},
   journal={Journal of Big Data},
   year={2025},
-  publisher={Springer Nature}
+  publisher={Springer Nature},
+  note={Under Review}
 }
 ```
 
