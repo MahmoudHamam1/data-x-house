@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<configuration>
+    <property>
+        <name>hive.server2.thrift.max.message.size</name>
+        <value>536870912</value>
+    </property>
+    <property>
+        <name>hive.server2.thrift.port</name>
+        <value>10000</value>
+    </property>
+    <property>
+        <name>hive.server2.thrift.bind.host</name>
+        <value>dx-master</value>
+    </property>
+
+    <property>
+        <name>hive.server2.thrift.http.max.message.size</name>
+        <value>536870912</value>
+        <description>Maximum message size in bytes for HTTP transport (256MB)</description>
+    </property>
+
+    <property>
+        <name>hive.server2.thrift.max.message.size</name>
+        <value>536870912</value>
+        <description>Maximum message size in bytes for binary transport (256MB)</description>
+    </property>
+</configuration>

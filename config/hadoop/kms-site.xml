@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <!-- 
+  <property>
+    <name>hadoop.security.key.provider.path</name>
+    <value>jceks://file/dxhouse/kms/kms.keystore</value>
+  </property>
+
+  <property>
+    <name>hadoop.security.key.provider.password.file</name>
+    <value>/dxhouse/kms/kms.keystore.password</value>
+  </property>
+
+  <property>
+    <name>hadoop.kms.http.port</name>
+    <value>16000</value>
+  </property> -->
+
+  <!-- KMS Keystore -->
+  <property>
+    <n>hadoop.kms.key.provider.uri</n>
+    <value>jceks://file/dxhouse/kms/kms.keystore</value>
+  </property>
+
+  <!-- KMS Keystore Password -->
+  <property>
+    <n>hadoop.kms.key.provider.password</n>
+    <value>DXh0useP@ss</value>
+  </property>
+
+  <!-- KMS Bind Address -->
+  <property>
+    <n>hadoop.kms.bind.host</n>
+    <value>0.0.0.0</value>
+  </property>
+
+  <!-- KMS Port -->
+  <property>
+    <n>hadoop.kms.http.port</n>
+    <value>9600</value>
+  </property>
+
+  <!-- KMS HTTPS -->
+  <property>
+    <n>hadoop.kms.http.port.https</n>
+    <value>9601</value>
+  </property>
+   <!-- Recommended: use Kerberos in production -->
+  <property>
+    <name>hadoop.kms.authentication.type</name>
+    <value>simple</value> <!-- change to 'kerberos' after Kerberos setup -->
+  </property>
+
+  <!-- administrators for the KMS web interface & management -->
+  <property>
+    <name>hadoop.kms.http.administrators</name>
+    <value>hadoop,hdfs,admin</value>
+  </property>
+
+  <property>
+    <name>hadoop.kms.authentication.simple.anonymous.allowed</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>hadoop.kms.authentication.kerberos.name.rules</name>
+    <value>DEFAULT</value>
+  </property>
+
+    <!-- Allow Trino to act as proxy user -->
+  <property>
+    <name>hadoop.kms.proxyuser.hadoop.users</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.kms.proxyuser.hadoop.groups</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.kms.proxyuser.hadoop.hosts</name>
+    <value>*</value>
+  </property>
+
+      <!-- Allow Airflow to act as proxy user -->
+  <property>
+    <name>hadoop.kms.proxyuser.airflow.users</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.kms.proxyuser.airflow.groups</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.kms.proxyuser.airflow.hosts</name>
+    <value>*</value>
+  </property>
+  
+<!-- Allow Gravitino to act as proxy user -->
+  <property>
+    <name>hadoop.kms.proxyuser.gravitino.users</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.kms.proxyuser.gravitino.groups</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.kms.proxyuser.gravitino.hosts</name>
+    <value>*</value>
+  </property>
+
+  <!-- Allow Trino to act as proxy user -->
+  <property>
+    <name>hadoop.kms.proxyuser.trino.users</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.kms.proxyuser.trino.groups</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.kms.proxyuser.trino.hosts</name>
+    <value>*</value>
+  </property>
+
+</configuration>

@@ -1,0 +1,6 @@
+Query_ID,Query_Description,Complexity_Level,Hive_Seconds,Trino_Seconds,Speedup_Factor
+Q1,Simple projection: SELECT l_orderkey l_shipdate FROM lineitem LIMIT 1000,Low,15.086,1.99,7.6
+Q2,Filter & projection: SELECT * FROM orders WHERE o_orderstatus = 'F',Low-Medium,37.42,4.93,7.6
+Q3,Aggregation: SELECT o_custkey COUNT(*) FROM orders GROUP BY o_custkey,Medium,215.18,28.35,7.6
+Q4,Aggregation & sorting: SELECT o_orderpriority COUNT(*) AS cnt FROM orders GROUP BY o_orderpriority ORDER BY cnt DESC,Medium-High,207.43,27.33,7.6
+Q5,Join & aggregation: SELECT c_nationkey SUM(l_extendedprice) FROM customer JOIN orders JOIN lineitem GROUP BY c_nationkey,High,1206.74,159.2,7.6
