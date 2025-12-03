@@ -87,8 +87,6 @@ The implementation features a **three-layer data pipeline** orchestrated by Apac
    - Optimized for BI tools (Superset, Tableau)
    - ACID transactions and time travel via Iceberg
 
-See [REPOSITORY_STRUCTURE.md](REPOSITORY_STRUCTURE.md) for detailed pipeline documentation.
-
 ### Technology Stack
 
 | Layer | Technologies |
@@ -140,8 +138,8 @@ See [REPOSITORY_STRUCTURE.md](REPOSITORY_STRUCTURE.md) for detailed pipeline doc
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/[username]/dxhouse-implementation.git
-cd dxhouse-implementation
+git clone https://github.com/[username]/data-x-house.git
+cd data-x-house
 ```
 
 ### 2. Build Docker Image
