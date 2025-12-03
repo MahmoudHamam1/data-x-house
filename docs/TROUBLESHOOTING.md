@@ -85,7 +85,7 @@ netstat -tulpn | grep 9083
 hive --service metastore &
 
 # Verify MySQL connection
-mysql -h dx-database -u hive -p
+mysql -h dx-database -u hive -p${HIVE_DB_PASSWORD}
 
 # Check hive-site.xml configuration
 grep -A 2 "javax.jdo.option.ConnectionURL" /opt/hive/conf/hive-site.xml
@@ -121,7 +121,7 @@ stop-all.sh && start-all.sh
 **Solutions**:
 ```bash
 # Test MySQL connectivity
-mysql -h dx-database -u hive -p tpch
+mysql -h dx-database -u hive -p${HIVE_DB_PASSWORD} tpch
 
 # Verify JDBC driver
 ls /opt/sqoop/lib/mysql-connector-j-8.0.33.jar
@@ -133,7 +133,7 @@ sqoop version
 sqoop import --verbose \
     --connect jdbc:mysql://dx-database:3306/tpch \
     --username hive \
-    --password hivepass \
+    --password ${HIVE_DB_PASSWORD} \
     --table orders
 ```
 
@@ -182,7 +182,6 @@ hive -e "SHOW CREATE TABLE raw.orders;"
 
 **Solutions**:
 ```bash
-# Use Tez instead of MapReduce
 hive -e "SET hive.execution.engine=tez;"
 
 # Enable vectorization
@@ -204,11 +203,11 @@ hive -e "EXPLAIN SELECT * FROM orders WHERE o_orderstatus='F';"
 # Increase query timeout in config.properties
 echo "query.max-execution-time=30m" >> /opt/trino/etc/config.properties
 
-# Restart Trino
-systemctl restart trino
+# Restart Trino container
+docker restart dx-trino
 
 # Check Trino worker status
-trino-cli --execute "SELECT * FROM system.runtime.nodes;"
+trino --execute "SELECT * FROM system.runtime.nodes;"
 ```
 
 ### Out of Memory Errors
@@ -218,7 +217,7 @@ trino-cli --execute "SELECT * FROM system.runtime.nodes;"
 **Solutions**:
 ```bash
 # Increase Spark executor memory
-spark-submit --executor-memory 4g --driver-memory 4g ...
+spark-submit --executor-memory 8g --driver-memory 8g ...
 
 # Increase Hive container size
 hive -e "SET hive.tez.container.size=4096;"
@@ -381,8 +380,8 @@ tail -f /opt/airflow/logs/scheduler/latest/*.log
 # Verify DAG directory permissions
 ls -la /opt/airflow/dags/
 
-# Restart Airflow scheduler
-airflow scheduler restart
+# Restart Airflow container
+docker restart dx-airflow
 ```
 
 ### Task Timeout
@@ -529,5 +528,5 @@ docker stats
 
 ---
 
-**Last Updated**: 2025-01-03  
+**Last Updated**: December 1, 2025
 **Version**: 1.0

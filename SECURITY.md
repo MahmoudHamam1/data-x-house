@@ -4,14 +4,21 @@
 
 This repository contains **placeholder values** for all sensitive information. Before deployment, you must replace all placeholders with actual credentials.
 
-### Placeholders Used
+### Environment Variables Used
 
-The following placeholders are used throughout the configuration files:
+The following environment variables are used throughout the configuration files for security:
 
-- `<HIVE_PASSWORD>` - Hive database password
-- `<HADOOP_PASSWORD>` - Hadoop user password  
-- `<ROOT_PASSWORD>` - MySQL root password
-- `<RANGER_PASSWORD>` - Apache Ranger admin password
+- `${HIVE_DB_PASSWORD}` - Hive database password
+- `${DB_ROOT_PASSWORD}` - MySQL root password
+- `${RANGER_ADMIN_PASSWORD}` - Ranger admin password
+- `${RANGER_TAGSYNC_PASSWORD}` - Ranger TagSync password
+- `${RANGER_USERSYNC_PASSWORD}` - Ranger UserSync password
+- `${RANGER_KEYADMIN_PASSWORD}` - Ranger KeyAdmin password
+- `${RANGER_UNIX_PASSWORD}` - Ranger Unix user password
+- `${RANGER_DB_PASSWORD}` - Ranger database password
+- `${AIRFLOW_JWT_SECRET}` - Airflow JWT secret key
+- `${HUE_SECRET_KEY}` - Hue application secret key
+- `${KMS_KEYSTORE_PASSWORD}` - Hadoop KMS keystore password
 
 ### Files Requiring Credential Configuration
 
@@ -22,10 +29,25 @@ The following placeholders are used throughout the configuration files:
 - `config/airflow/dags/*.py`
 
 **Before Running**:
-1. Replace all `<HIVE_PASSWORD>` with your actual Hive password
-2. Replace all `<HADOOP_PASSWORD>` with your actual Hadoop password
-3. Replace all `<ROOT_PASSWORD>` with your actual MySQL root password
-4. Replace all `<RANGER_PASSWORD>` with your actual Ranger admin password
+1. Set all required environment variables with secure values
+2. Never use default or weak passwords
+3. Use strong, unique passwords for each service
+4. Consider using a secrets management system
+
+**Example Environment Setup**:
+```bash
+export HIVE_DB_PASSWORD="your_secure_hive_password"
+export DB_ROOT_PASSWORD="your_secure_root_password"
+export RANGER_ADMIN_PASSWORD="your_secure_ranger_admin_password"
+export RANGER_TAGSYNC_PASSWORD="your_secure_ranger_tagsync_password"
+export RANGER_USERSYNC_PASSWORD="your_secure_ranger_usersync_password"
+export RANGER_KEYADMIN_PASSWORD="your_secure_ranger_keyadmin_password"
+export RANGER_UNIX_PASSWORD="your_secure_ranger_unix_password"
+export RANGER_DB_PASSWORD="your_secure_ranger_db_password"
+export AIRFLOW_JWT_SECRET="your_secure_airflow_jwt_secret"
+export HUE_SECRET_KEY="your_secure_hue_secret_key"
+export KMS_KEYSTORE_PASSWORD="your_secure_kms_keystore_password"
+```
 
 ### Security Best Practices
 
@@ -40,12 +62,13 @@ The following placeholders are used throughout the configuration files:
 ### Reporting Security Issues
 
 If you discover a security vulnerability, please report it to:
-- Create a private security advisory on GitHub
-- Or contact the repository maintainers directly
+- **Email**: [mahmoudhamam710@gmail.com](mailto:mahmoudhamam710@gmail.com)
+- **GitHub**: Create a private security advisory
+- **Academic**: [11422020425998@pg.cu.edu.eg](mailto:11422020425998@pg.cu.edu.eg)
 
 **Do not** create public issues for security vulnerabilities.
 
 ---
 
-**Last Updated**: 2025-01-03  
+**Last Updated**: December 1, 2025
 **Version**: 1.0

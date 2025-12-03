@@ -18,7 +18,7 @@
   
   <property>
     <name>javax.jdo.option.ConnectionPassword</name>
-    <value>hivepass</value>
+    <value>${HIVE_DB_PASSWORD}</value>
   </property>
 
   <!-- Force MySQL Usage -->
@@ -160,17 +160,17 @@
   <!-- Spark Resource Configuration -->
   <property>
     <name>spark.executor.memory</name>
-    <value>512m</value>
+    <value>8g</value>
   </property>
 
   <property>
     <name>spark.executor.cores</name>
-    <value>1</value>
+    <value>2</value>
   </property>
 
   <property>
     <name>spark.driver.memory</name>
-    <value>512m</value>
+    <value>8g</value>
   </property>
 
   <!-- Multi-host Network Configuration -->
@@ -273,7 +273,7 @@
   <!-- Result Size Management for Multi-host -->
   <property>
     <name>spark.driver.maxResultSize</name>
-    <value>512m</value>
+    <value>6g</value>
   </property>
 
   <!-- Scratch Directory Configuration -->

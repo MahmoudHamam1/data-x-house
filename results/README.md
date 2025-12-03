@@ -63,7 +63,7 @@ All experiments can be reproduced using:
 If you use this data, please cite:
 
 ```bibtex
-@article{mekled2024dxhouse,
+@article{hamam2025dxhouse,
   title={Data-X-House: A Novel Unified Data Management Architecture Based on DLAF},
   author={Mekled, Mahmoud Hamam},
   journal={Journal of Big Data},
@@ -77,11 +77,12 @@ If you use this data, please cite:
 
 For questions about the experimental setup or results:
 - Mahmoud Hamam Mekled
+- MSc in Information Systems and Artificial Intelligence
 - Cairo University, Egypt
-- Email: [contact information]
+- Email: [mahmoudhamam710@gmail.com](mailto:mahmoudhamam710@gmail.com) or [11422020425998@pg.cu.edu.eg](mailto:11422020425998@pg.cu.edu.eg)
 
 ---
 
-**Last Updated**: 2025-01-03  
+**Last Updated**: December 1st, 2025
 **Data Version**: 1.0  
 **TPC-H Scale Factor**: 10

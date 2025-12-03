@@ -3,15 +3,15 @@ message: "If you use this software, please cite it as below."
 type: software
 title: "DX House: Unified Data Management Architecture Implementation"
 version: 1.0.0
-date-released: 2025-01-15
+date-released: 2025-12-01
 authors:
   - family-names: "Mekled"
     given-names: "Mahmoud Hamam"
     orcid: "https://orcid.org/0000-0000-0000-0000"
-    affiliation: "Cairo University"
-    email: "your.email@example.com"
-repository-code: "https://github.com/[username]/data-x-house"
-url: "https://github.com/[username]/data-x-house"
+    affiliation: "Cairo University, Faculty of Computers and Artificial Intelligence"
+    email: "mahmoudhamam710@gmail.com"
+repository-code: "https://github.com/MahmoudHamam1/data-x-house"
+url: "https://github.com/MahmoudHamam1/data-x-house"
 abstract: "Implementation artifacts for Data-X-House (DX House), a comprehensive unified data management architecture that combines data lake and warehouse capabilities for on-premise big data platforms in highly regulated sectors."
 keywords:
   - big-data

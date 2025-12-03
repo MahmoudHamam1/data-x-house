@@ -25,7 +25,7 @@
   <!-- KMS Keystore Password -->
   <property>
     <n>hadoop.kms.key.provider.password</n>
-    <value>DXh0useP@ss</value>
+    <value>${KMS_KEYSTORE_PASSWORD}</value>
   </property>
 
   <!-- KMS Bind Address -->

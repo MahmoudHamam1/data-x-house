@@ -49,11 +49,12 @@ hive -e "SHOW DATABASES;"
 ```
 
 3. **Access web interfaces**:
-- Airflow: http://dx-worker3:8080
-- Superset: http://dx-worker3:8088
+- Airflow: http://dx-worker3:8082
+- Superset: http://dx-worker3:9099
 - Hue: http://dx-worker3:8888
 - Ranger: http://dx-worker3:6080
-- Gravitino: http://dx-worker3:8090
+- Gravitino: http://dx-worker3:7070
+- Trino: http://dx-worker3:8090
 
 ---
 
@@ -63,7 +64,7 @@ hive -e "SHOW DATABASES;"
 
 Use Airflow DAG for automated batch ingestion:
 
-1. **Access Airflow UI**: http://dx-worker3:8080
+1. **Access Airflow UI**: http://dx-worker3:8082
 2. **Trigger DAG**: `batch_ingestion_dag`
 3. **Monitor progress**: Check task status in Airflow UI
 
@@ -72,7 +73,7 @@ Use Airflow DAG for automated batch ingestion:
 sqoop import \
     --connect jdbc:mysql://dx-database:3306/tpch \
     --username hive \
-    --password hivepass \
+    --password ${HIVE_DB_PASSWORD} \
     --table orders \
     --target-dir /storage/tpch/orders \
     --fields-terminated-by ',' \
@@ -256,7 +257,7 @@ LIMIT 10;
 
 ### Apache Gravitino
 
-**Metadata Management**: http://dx-worker3:8090
+**Metadata Management**: http://dx-worker3:7070
 
 **Features**:
 - Unified catalog across all databases
@@ -265,7 +266,7 @@ LIMIT 10;
 
 ### Apache Superset
 
-**BI Dashboards**: http://dx-worker3:8088
+**BI Dashboards**: http://dx-worker3:9099
 
 **Create Dashboard**:
 1. **Add Dataset**: Connect to delivery database
@@ -285,7 +286,7 @@ LIMIT 10;
 
 ### Airflow Monitoring
 
-**Workflow Management**: http://dx-worker3:8080
+**Workflow Management**: http://dx-worker3:8082
 
 **Monitor DAGs**:
 1. **View DAG runs**: Check execution history
@@ -341,5 +342,5 @@ For architecture information, see [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ---
 
-**Last Updated**: 2025-01-03  
+**Last Updated**: December 1, 2025
 **Version**: 1.0

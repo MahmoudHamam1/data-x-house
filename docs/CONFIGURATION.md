@@ -163,7 +163,7 @@ hdfs crypto -createZone -keyName key_transform_delivery_zone -path /user/hive/wa
 
 <property>
     <name>javax.jdo.option.ConnectionPassword</name>
-    <value>hivepass</value>
+    <value>${HIVE_DB_PASSWORD}</value>
 </property>
 
 <property>
@@ -189,8 +189,7 @@ hdfs crypto -createZone -keyName key_transform_delivery_zone -path /user/hive/wa
 ```xml
 <property>
     <name>hive.execution.engine</name>
-    <value>tez</value>
-    <description>Use Tez for better performance</description>
+    <value>spark</value>
 </property>
 
 <property>
@@ -236,11 +235,11 @@ spark.history.fs.logDirectory    hdfs://dx-master:8020/spark-logs
 
 **Executor Configuration**:
 ```properties
-spark.executor.memory            4g
+spark.executor.memory            8g
 spark.executor.cores             2
 spark.executor.instances         3
-spark.driver.memory              4g
-spark.driver.cores               2
+spark.driver.memory              8g
+spark.driver.maxResultSize       6g
 ```
 
 **Hive Integration**:
@@ -279,10 +278,10 @@ spark.serializer                 org.apache.spark.serializer.KryoSerializer
 ```properties
 coordinator=true
 node-scheduler.include-coordinator=false
-http-server.http.port=8081
+http-server.http.port=8080
 query.max-memory=4GB
 query.max-memory-per-node=2GB
-discovery.uri=http://dx-worker3:8081
+discovery.uri=http://dx-worker3:8080
 ```
 
 ### JVM Configuration (jvm.config)
@@ -342,7 +341,7 @@ max_active_runs_per_dag = 16
 [webserver]
 web_server_host = 0.0.0.0
 web_server_port = 8080
-base_url = http://dx-worker3:8080
+base_url = http://dx-worker3:8082
 ```
 
 **Scheduler Settings**:
@@ -384,11 +383,11 @@ airflow connections add spark \
 DB_FLAVOR=MYSQL
 SQL_CONNECTOR_JAR=/opt/ranger/mysql-connector-j-8.0.33.jar
 db_root_user=root
-db_root_password=rootpass
+db_root_password=${DB_ROOT_PASSWORD}
 db_host=dx-database:3306
 db_name=ranger
 db_user=rangeradmin
-db_password=rangerpass
+db_password=${RANGER_DB_PASSWORD}
 ```
 
 **Ranger Admin**:
@@ -469,7 +468,7 @@ engine=mysql
 host=dx-database
 port=3306
 user=hue
-password=huepass
+password=${HUE_DB_PASSWORD}
 name=hue
 ```
 
@@ -563,5 +562,5 @@ curl http://dx-worker3:6080/service/public/v2/api/service
 
 ---
 
-**Last Updated**: 2025-01-03  
+**Last Updated**: December 1, 2025
 **Version**: 1.0

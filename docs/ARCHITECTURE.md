@@ -94,7 +94,6 @@ DX House is a unified lakehouse architecture that combines data lake and data wa
 **Components**:
 - **Apache Spark 3.4.2**: Distributed data processing
 - **Apache Hive 3.1.3**: SQL-based data warehouse
-- **Apache Tez 0.10.4**: Execution engine for Hive
 
 **Databases**:
 1. **datawarehouse**: Star schema for analytics
@@ -200,7 +199,6 @@ DX House is a unified lakehouse architecture that combines data lake and data wa
 | | Hadoop KMS | 3.3.6 | Encryption key management |
 | **Processing** | Apache Spark | 3.4.2 | Distributed data processing |
 | | Apache Hive | 3.1.3 | SQL data warehouse |
-| | Apache Tez | 0.10.4 | Execution engine |
 | **Ingestion** | Apache Sqoop | 1.4.7 | JDBC data ingestion |
 | | Apache Airflow | 3.0.6 | Workflow orchestration |
 | **Query** | Trino | 477 | High-performance SQL engine |
@@ -277,7 +275,6 @@ DX House extends the Data Lake Architecture Framework (DLAF) from 9 to 11 aspect
 1. **Data Sources**: Multiple source types and protocols
 2. **Data Ingestion**: Batch and streaming ingestion
 3. **Data Storage**: Distributed file system (HDFS)
-4. **Data Processing**: Spark, Hive, Tez
 5. **Data Governance**: Metadata and lineage
 6. **Data Security**: Encryption and access control
 7. **Data Quality**: Validation and profiling
@@ -309,7 +306,7 @@ DX House extends the Data Lake Architecture Framework (DLAF) from 9 to 11 aspect
 | dx-master | Master | 5 cores | 12 GB | 200 GB | NameNode, ResourceManager, Hive Metastore, Spark Master |
 | dx-worker1 | Worker | 5 cores | 8 GB | 100 GB | DataNode, NodeManager, Spark Worker |
 | dx-worker2 | Worker | 5 cores | 8 GB | 100 GB | DataNode, NodeManager, Spark Worker |
-| dx-worker3 | Admin | 5 cores | 18 GB | 200 GB | Airflow, Superset, Hue, Ranger, Gravitino, Trino |
+| dx-worker3 | Worker/Admin | 5 cores | 18 GB | 200 GB | DataNode, NodeManager, Spark Worker, Airflow, Superset, Hue, Ranger, Gravitino, Trino |
 
 ### Network Architecture
 
@@ -326,12 +323,12 @@ DX House extends the Data Lake Architecture Framework (DLAF) from 9 to 11 aspect
 | Hive Metastore | 9083 | Thrift |
 | Spark Master | 7077 | Spark |
 | Spark UI | 8080 | Web UI |
-| Airflow | 8080 | Web UI |
-| Superset | 8088 | Web UI |
+| Airflow | 8082 | Web UI |
+| Superset | 9099 | Web UI |
 | Hue | 8888 | Web UI |
 | Ranger | 6080 | Web UI |
-| Gravitino | 8090 | Web UI |
-| Trino | 8081 | HTTP |
+| Gravitino | 7070 | Web UI |
+| Trino | 8090 | Web UI |
 
 ### Docker Deployment
 
@@ -396,5 +393,5 @@ DX House extends the Data Lake Architecture Framework (DLAF) from 9 to 11 aspect
 
 ---
 
-**Last Updated**: 2025-01-03  
+**Last Updated**: December 1, 2025
 **Version**: 1.0  

@@ -92,7 +92,7 @@ The implementation features a **three-layer data pipeline** orchestrated by Apac
 | Layer | Technologies |
 |-------|-------------|
 | **Storage** | HDFS 3.3.6, Apache Hive 3.1.3, Apache Iceberg 1.3.1 |
-| **Processing** | Apache Spark 3.4.2, Apache Tez 0.10.4 |
+| **Processing** | Apache Spark 3.4.2 |
 | **Ingestion** | Apache Sqoop 1.4.7, Apache Airflow 3.0.6 |
 | **Security** | Apache Ranger 2.7.0, Hadoop KMS |
 | **Metadata** | Apache Gravitino 0.7.0, Hive Metastore |
@@ -133,12 +133,12 @@ The implementation features a **three-layer data pipeline** orchestrated by Apac
 - 4 nodes (1 master + 3 workers)
 - 8GB RAM per node minimum
 - 100GB disk per node
-- CentOS 7 or compatible Linux
+- CentOS 7 or RHEL 7 or compatible Linux
 ```
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/[username]/data-x-house.git
+git clone https://github.com/MahmoudHamam1/data-x-house.git
 cd data-x-house
 ```
 
@@ -172,10 +172,10 @@ hive -e "SHOW DATABASES;"
 
 | Node | Role | CPU | RAM | Disk | OS |
 |------|------|-----|-----|------|-----|
-| dx-master | Master | 5 Cores | 12 GB | 200 GB | CentOS 7 |
-| dx-worker1 | Worker | 5 Cores | 8 GB | 100 GB | CentOS 7 |
-| dx-worker2 | Worker | 5 Cores | 8 GB | 100 GB | CentOS 7 |
-| dx-worker3 | Admin | 5 Cores | 18 GB | 200 GB | CentOS 7 |
+| dx-master | Master | 5 Cores | 12 GB | 200 GB | CentOS 7 or RHEL 7 |
+| dx-worker1 | Worker | 5 Cores | 8 GB | 100 GB | CentOS 7 or RHEL 7 |
+| dx-worker2 | Worker | 5 Cores | 8 GB | 100 GB | CentOS 7 or RHEL 7 |
+| dx-worker3 | Admin | 5 Cores | 18 GB | 200 GB | CentOS 7 or RHEL 7 |
 
 ---
 
@@ -227,7 +227,7 @@ hive -e "SHOW DATABASES;"
 If you use DX House in your research, please cite:
 
 ```bibtex
-@article{mekled2024dxhouse,
+@article{hamam2025dxhouse,
   title={Data-X-House: A Novel Unified Data Management Architecture Based on DLAF},
   author={Mekled, Mahmoud Hamam},
   journal={Journal of Big Data},
@@ -248,11 +248,12 @@ Apache License 2.0 - see [LICENSE](LICENSE) file for details.
 ## Contact
 
 **Mahmoud Hamam Mekled**  
-MSc Candidate, Information Systems  
-Cairo University, Egypt
+MSc in Information Systems and Artificial Intelligence  
+Cairo University, Egypt  
+Email: [mahmoudhamam710@gmail.com](mailto:mahmoudhamam710@gmail.com) | [11422020425998@pg.cu.edu.eg](mailto:11422020425998@pg.cu.edu.eg)
 
 ---
 
 **⭐ If you find this project useful, please star this repository!**
 
-*© 2024-2025 Mahmoud Hamam Mekled. All rights reserved.*
+*© 2025 Mahmoud Hamam Mekled. All rights reserved.*
