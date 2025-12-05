@@ -18,7 +18,7 @@ sqoop  import \
     --connect jdbc:mysql://dx-database:3306/${SRC_DB_NAME} \
     --driver com.mysql.cj.jdbc.Driver \
     --username hive \
-    --password <HIVE_PASSWORD> \
+    --password ${HIVE_DB_PASSWORD} \
     --table ${TABLE_NAME} \
     --target-dir ${TARGET_DIR} \
     --delete-target-dir \

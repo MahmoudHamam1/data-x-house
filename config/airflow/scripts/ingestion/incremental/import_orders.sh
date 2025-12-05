@@ -17,7 +17,7 @@ sqoop import \
     --connect jdbc:mysql://dx-database:3306/${SRC_DB_NAME} \
     --driver com.mysql.cj.jdbc.Driver \
     --username hive \
-    --password <HIVE_PASSWORD> \
+    --password ${HIVE_DB_PASSWORD} \
     --table ${TABLE_NAME} \
     --target-dir ${TARGET_DIR} \
     --where "ORDERDATE >= '1996-01-01' and ORDERDATE < '1997-01-01'" \

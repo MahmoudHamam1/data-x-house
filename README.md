@@ -118,7 +118,7 @@ The implementation features a **three-layer data pipeline** orchestrated by Apac
 
 ### Performance
 - Distributed processing with Spark + YARN
-- Trino for interactive analytics (7.5x faster than Hive)
+- Trino for interactive analytics (7.6x faster than Hive)
 - 173%-255% storage efficiency gains with Iceberg
 - Parallel ingestion with multi-mapper Sqoop
 
