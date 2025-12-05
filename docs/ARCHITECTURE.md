@@ -222,22 +222,15 @@ DX House is a unified lakehouse architecture that combines data lake and data wa
 
 ### End-to-End Pipeline
 
-```
-[Source Systems]
-    ↓
-[Ingestion Layer] → Sqoop/Airflow
-    ↓
-[RAW Zone] → HDFS (/storage/tpch/)
-    ↓
-[Processing Layer] → Spark/Hive
-    ↓
-[Transformation Zone] → Iceberg Tables (datawarehouse)
-    ↓
-[Delivery Layer] → Data Marts (delivery)
-    ↓
-[Query Layer] → Trino/Superset
-    ↓
-[End Users]
+```mermaid
+flowchart TD
+    A[(Source Systems)] --> B{{Ingestion Layer}}
+    B -->|Sqoop/Airflow| C[/RAW Zone - HDFS/]
+    C --> D{{Processing Layer}}
+    D -->|Spark/Hive| E[/Transformation Zone/]
+    E -->|Iceberg Tables| F{{Delivery Layer}}
+    F -->|Data Marts| G{{Query Layer}}
+    G -->|Trino/Superset| H([End Users])
 ```
 
 ### Batch Ingestion Flow

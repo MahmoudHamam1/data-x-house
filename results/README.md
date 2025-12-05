@@ -84,5 +84,4 @@ For questions about the experimental setup or results:
 ---
 
 **Last Updated**: December 1st, 2025
-**Data Version**: 1.0  
 **TPC-H Scale Factor**: 10

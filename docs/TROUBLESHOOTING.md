@@ -166,7 +166,7 @@ iperf3 -c dx-database
 hdfs dfs -ls /storage/tpch/orders/
 
 # Manually add partitions
-hive -e "ALTER TABLE raw.orders ADD PARTITION (year='2024', month='12', day='03', hour='10');"
+hive -e "ALTER TABLE raw.orders ADD PARTITION (year='2025', month='12', day='01', hour='10');"
 
 # Verify partition format matches table definition
 hive -e "SHOW CREATE TABLE raw.orders;"
@@ -529,4 +529,4 @@ docker stats
 ---
 
 **Last Updated**: December 1, 2025
-**Version**: 1.0
+**Version**: 1.33

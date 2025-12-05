@@ -69,10 +69,20 @@ DX House consists of **seven architectural layers**:
 
 The implementation features a **three-layer data pipeline** orchestrated by Apache Airflow:
 
-**Ingestion → Transformation → Delivery**
+```mermaid
+flowchart LR
+    A[("Source Systems<br/>(MySQL, Files, APIs)")] -->|Extract| B{{"Ingestion Layer<br/>(Sqoop/Airflow)"}}
+    B -->|Load| C[/"RAW Zone<br/>(HDFS Storage)"/]
+    C -->|Transform| D{{"Processing Layer<br/>(Spark/Hive)"}}
+    D -->|Create| E[/"Transformation Zone<br/>(Iceberg Tables)"/]
+    E -->|Aggregate| F{{"Delivery Layer<br/>(Data Marts)"}}
+    F -->|Query| G(["End Users<br/>(BI Tools/Analysts)"])
+```
+
+**Pipeline Layers:**
 
 1. **Ingestion Layer**
-   - Batch ingestion: 8 TPC-H tables via Apache Sqoop (MySQL → HDFS)
+   - Batch ingestion: 8 TPC-H tables via Apache Sqoop (MySQL to HDFS)
    - Incremental ingestion: Delta updates for high-velocity tables
    - Partitioned storage with Snappy compression
 

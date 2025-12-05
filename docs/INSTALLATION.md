@@ -4,23 +4,24 @@
 - [1. Overview](#1-overview)
 - [2. Prerequisites](#2-prerequisites)
 - [3. Provision VMs with Docker](#3-provision-vms-with-docker)
-  - [3.1 Build DXHouse Docker Image](#31-build-dxhouse-docker-image)
+  - [4. Configure Docker Cluster](#4-configure-docker-cluster)
+  - [4.1 Build DXHouse Docker Image](#31-build-dxhouse-docker-image)
     - [3.1.1 Hadoop](#311-hadoop)
     - [3.1.2 YARN](#312-yarn)
     - [3.1.3 MapReduce](#313-mapreduce)
     - [3.1.4 Hive](#314-hive)
     - [3.1.5 Spark](#315-spark)
     - [3.1.6 Iceberg](#316-iceberg)
-  - [3.2 Ranger](#32-ranger)
-  - [3.3 Hue](#33-hue)
-  - [3.4 Trino](#34-trino)
-  - [3.5 Airflow](#35-airflow)
-  - [3.6 Gravitino](#36-gravitino)
-  - [3.7 Superset](#37-superset)
-- [4. Verification & Testing](#4-verification--testing)
-- [5. Troubleshooting](#5-troubleshooting)
-- [6. Maintenance](#6-maintenance)
-- [7. Appendix](#7-appendix)
+    - [4.2 Ranger](#32-ranger)
+    - [4.3 Hue](#33-hue)
+    - [4.4 Trino](#34-trino)
+    - [4.5 Airflow](#35-airflow)
+    - [4.6 Gravitino](#36-gravitino)
+    - [4.7 Superset](#37-superset)
+- [5. Verification & Testing](#4-verification--testing)
+- [6. Troubleshooting](#5-troubleshooting)
+- [7. Maintenance](#6-maintenance)
+- [8. Appendix](#7-appendix)
 
 ---
 
@@ -55,7 +56,6 @@ This guide provides all steps to provision the environment, build Docker images,
 | Disk | 100 GB per node |
 | Hostnames | `dx-master`, `dx-worker1`, `dx-worker2`, `dx-worker3` |
 | Directory | `/dxhouse` |
-| Network | Docker overlay network `dxhouse-net` |
 | Network | Docker overlay network `dxhouse-net` |
 | External DB | MySQL 8.0 as metastore and services database backend |
 | Dependencies | Java 1.8, Docker, Docker Compose |
@@ -188,7 +188,9 @@ Each VM acts as a node in the cluster and runs specific services in containers.
 
 ---
 
-## 3.1 Build DXHouse Docker Image
+## 4. Configure Docker Cluster
+
+### 4.1 Build DXHouse Docker Image
 
 The base image includes the main Hadoop ecosystem components. We have used this image to create the `Master` and `Worker` nodes.
 
@@ -243,7 +245,7 @@ The base image includes the main Hadoop ecosystem components. We have used this 
         /dxhouse/bin/cluster-entrypoint.sh
         ```
 
-### 3.1.1 Hadoop
+#### 4.1.1 Hadoop
 - **Version:** 3.3.6  
 - **Base Path:** `/dxhouse-image/config/hadoop`
 - **Configs:**
@@ -255,7 +257,7 @@ The base image includes the main Hadoop ecosystem components. We have used this 
   start-dfs.sh
   ```
 
-### 3.1.2 YARN
+#### 4.1.2 YARN
 - **Version:** 3.3.6  
 - **Configs:**
   - `yarn-site.xml`
@@ -265,7 +267,7 @@ The base image includes the main Hadoop ecosystem components. We have used this 
   start-yarn.sh
   ```
 
-### 3.1.3 MapReduce
+#### 4.1.3 MapReduce
 - **Version:** Integrated with Hadoop 3.3.6  
 - **Configs:**
   - `mapred-site.xml`
@@ -274,7 +276,7 @@ The base image includes the main Hadoop ecosystem components. We have used this 
   hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar pi 2 5
   ```
 
-### 3.1.4 Hive
+#### 4.1.4 Hive
 - **Version:** 3.1.3  
 - **Metastore:** MySQL  
 - **Configs:**
@@ -285,7 +287,7 @@ The base image includes the main Hadoop ecosystem components. We have used this 
   hive --service metastore
   ```
 
-### 3.1.5 Spark
+#### 4.1.5 Spark
 - **Version:** 3.4.2  
 - **Mode:** Standalone with 3 workers  
 - **Configs:**
@@ -296,7 +298,7 @@ The base image includes the main Hadoop ecosystem components. We have used this 
   spark-submit --class org.apache.spark.examples.SparkPi   /dxhouse/spark/examples/jars/spark-examples_2.12-3.4.2.jar 10
   ```
 
-### 3.1.6 Iceberg
+#### 4.1.6 Iceberg
 - **Version:** 1.3.1  
 - **Catalog:** Hive or REST-based  
 - **Configs:**
@@ -311,7 +313,7 @@ The base image includes the main Hadoop ecosystem components. We have used this 
 
 ---
 
-## 3.2 Database
+### 4.2 Database
 
 - **Purpose:** Host all services metadata and configurations (Hive metastore, Airflow, Ranger, etc.)
 - **Version:** 8.0 
@@ -328,7 +330,7 @@ The base image includes the main Hadoop ecosystem components. We have used this 
   mysql/mysql-server
   ```
 
-## 3.3 Ranger
+### 4.3 Ranger
 
 - **Purpose:** Centralized security and policy management for Hadoop ecosystem  
 - **Version:** 2.7.0  
@@ -375,7 +377,7 @@ The base image includes the main Hadoop ecosystem components. We have used this 
 
 ---
 
-## 3.4 Hue
+### 4.4 Hue
 
 - **Purpose:** Web UI for HDFS, Hive, and Spark interaction  
 - **Version:** 4.11+  
@@ -397,7 +399,7 @@ The base image includes the main Hadoop ecosystem components. We have used this 
 
 ---
 
-## 3.5 Trino
+### 4.5 Trino
 
 - **Purpose:** Interactive SQL query engine for federated data access  
 - **Version:** 477  
@@ -428,7 +430,7 @@ The base image includes the main Hadoop ecosystem components. We have used this 
 
 ---
 
-## 3.6 Airflow
+### 4.6 Airflow
 
 - **Purpose:** Workflow orchestration and scheduling  
 - **Version:** 3.0.6
@@ -463,7 +465,7 @@ The base image includes the main Hadoop ecosystem components. We have used this 
 
 ---
 
-## 3.7 Gravitino
+### 4.7 Gravitino
 
 - **Purpose:** Metadata and catalog federation across Iceberg, Hive, and Trino  
 - **Version:** 0.7.0-incubating  
@@ -493,7 +495,7 @@ The base image includes the main Hadoop ecosystem components. We have used this 
 
 ---
 
-## 3.8 Superset
+### 4.8 Superset
 
 - **Purpose:** Data visualization and BI on top of Trino and Hive  
 - **Version:** 5.0.0  
@@ -527,7 +529,7 @@ The base image includes the main Hadoop ecosystem components. We have used this 
 
 ---
 
-## 4. Verification & Testing
+## 5. Verification & Testing
 
 | Service | Verification Command | Expected Result |
 |----------|---------------------|-----------------|
@@ -545,7 +547,7 @@ The base image includes the main Hadoop ecosystem components. We have used this 
 
 ---
 
-## 5. Troubleshooting
+## 6. Troubleshooting
 
 - **Network not found: dxhouse-net:** Docker overlay network missing
     ```bash
@@ -577,7 +579,7 @@ The base image includes the main Hadoop ecosystem components. We have used this 
 
 ---
 
-## 6. Maintenance
+## 7. Maintenance
 
 - **Start all containers:**
   ```bash
@@ -598,7 +600,7 @@ The base image includes the main Hadoop ecosystem components. We have used this 
 
 ---
 
-## 7. Appendix
+## 8. Appendix
 
 ### Version Matrix
 | Component | Version |
