@@ -1,0 +1,8 @@
+apache-airflow-providers-mysql
+apache-airflow-providers-ssh
+pyspark==3.4.2
+apache-airflow-providers-apache-hive
+apache-airflow-providers-apache-spark==5.1.1
+hdfs
+requests
+

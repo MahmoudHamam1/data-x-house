@@ -1,0 +1,9 @@
+Table,Size_MB,Mappers,Mean_MB_per_sec,Mean_Rows_per_sec,Tool
+customer,233,4,3.6,22388,SQOOP
+lineitem,7413,6,15.4,116478,SQOOP
+nation,1,1,0.04,1,SQOOP
+orders,1659,6,7.4,66666,SQOOP
+part,232,4,3.8,32787,SQOOP
+partsupp,1147,4,10.8,74766,SQOOP
+region,1,1,0.04,1,SQOOP
+supplier,13.5,1,0.27,200,SQOOP

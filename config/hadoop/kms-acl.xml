@@ -1,0 +1,173 @@
+<configuration>
+  <!-- Allow Hadoop, Hive, Spark, and Trino to use all keys -->
+  <property>
+    <name>key.acl.ALL</name>
+    <value>hadoop,hdfs,hive,trino</value>
+  </property>
+
+     <!-- Allow Trino to act as proxy user -->
+  <property>
+    <name>hadoop.kms.proxyuser.hadoop.users</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.kms.proxyuser.hadoop.groups</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.kms.proxyuser.hadoop.hosts</name>
+    <value>*</value>
+  </property>
+
+      <!-- Allow Airflow to act as proxy user -->
+  <property>
+    <name>hadoop.kms.proxyuser.airflow.users</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.kms.proxyuser.airflow.groups</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.kms.proxyuser.airflow.hosts</name>
+    <value>*</value>
+  </property>
+
+<!-- Allow Gravitino to act as proxy user -->
+  <property>
+    <name>hadoop.kms.proxyuser.gravitino.users</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.kms.proxyuser.gravitino.groups</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.kms.proxyuser.gravitino.hosts</name>
+    <value>*</value>
+  </property>
+
+  <!-- Allow Trino to act as proxy user -->
+  <property>
+    <name>hadoop.kms.proxyuser.trino.users</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.kms.proxyuser.trino.groups</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.kms.proxyuser.trino.hosts</name>
+    <value>*</value>
+  </property>
+
+  <!-- Optional: Allow all authenticated users to list keys -->
+  <property>
+    <name>key.acl.META</name>
+    <value>*</value>
+  </property>
+
+  <!-- Users allowed for key operations -->
+  <property>
+    <name>hadoop.kms.key.admin.acl</name>
+    <value>hadoop,hdfs,admin</value>
+  </property>
+
+  <property>
+    <name>hadoop.kms.key.user.acl</name>
+    <value>hadoop,hdfs,airflow,hive,trino,ranger,spark,admin,gravitino</value>
+  </property>
+
+  <!-- Admin ACLs -->
+  <property>
+    <n>hadoop.kms.acl.MANAGE_KEY_VERSION</n>
+    <value>hadoop,hdfs,airflow,hive,trino,ranger,spark,admin,gravitino</value>
+  </property>
+
+  <property>
+    <n>hadoop.kms.acl.GET_KEY_VERSION</n>
+    <value>hadoop,hdfs,airflow,hive,trino,ranger,spark,admin,gravitino</value>
+  </property>
+
+  <property>
+    <n>hadoop.kms.acl.GET_KEY</n>
+    <value>hadoop,hdfs,airflow,hive,trino,ranger,spark,admin,gravitino</value>
+  </property>
+
+  <property>
+    <n>hadoop.kms.acl.CREATE_KEY</n>
+    <value>hadoop,hdfs,admin</value>
+  </property>
+
+  <property>
+    <n>hadoop.kms.acl.DELETE_KEY</n>
+    <value>hadoop,hdfs,admin</value>
+  </property>
+
+  <property>
+    <n>hadoop.kms.acl.ROLLOVER_KEY</n>
+    <value>hadoop,hdfs,airflow,hive,trino,ranger,spark,admin,gravitino</value>
+  </property>
+
+  <!-- CRITICAL: Allow Trino to decrypt (DECRYPT_EEK) -->
+  <property>
+    <n>hadoop.kms.acl.DECRYPT_EEK</n>
+    <value>hadoop,hdfs,airflow,hive,trino,ranger,spark,admin,gravitino</value>
+  </property>
+
+  <!-- Allow Trino to encrypt (ENCRYPT_EEK) -->
+  <property>
+    <n>hadoop.kms.acl.ENCRYPT_EEK</n>
+    <value>hadoop,hdfs,airflow,hive,trino,ranger,spark,admin,gravitino</value>
+  </property>
+  <!-- Allow Trino to read metadata -->
+  <property>
+    <n>hadoop.kms.acl.GET_METADATA</n>
+    <value>hadoop,hdfs,airflow,hive,trino,ranger,spark,admin,gravitino</value>
+  </property>
+
+  <!-- Black ACLs (deny access) -->
+  <property>
+    <n>hadoop.kms.blacklist.MANAGE_KEY_VERSION</n>
+    <value></value>
+  </property>
+
+  <!-- ========================================== -->
+  <!-- Default ACLs (if specific key ACLs not set) -->
+  <!-- ========================================== -->
+
+  <property>
+    <n>hadoop.kms.default.acl.DECRYPT_EEK</n>
+    <value>hadoop,hdfs,airflow,hive,trino,ranger,spark,admin</value>
+  </property>
+
+  <property>
+    <n>hadoop.kms.default.acl.ENCRYPT_EEK</n>
+    <value>hadoop,hdfs,airflow,hive,trino,ranger,spark,admin</value>
+  </property>
+
+  <property>
+    <n>hadoop.kms.default.acl.GET_KEY</n>
+    <value>hadoop,hdfs,airflow,hive,trino,ranger,spark,admin</value>
+  </property>
+
+  <property>
+    <n>hadoop.kms.default.acl.GET_KEY_VERSION</n>
+    <value>hadoop,hdfs,airflow,hive,trino,ranger,spark,admin</value>
+  </property>
+
+  <property>
+    <name>hadoop.kms.authentication.simple.anonymous.allowed</name>
+    <value>true</value>
+  </property>
+
+
+</configuration>

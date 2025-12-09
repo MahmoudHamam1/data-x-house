@@ -1,0 +1,323 @@
+<?xml version="1.0"?>
+<configuration>
+  <!-- MySQL Database Configuration -->
+  <property>
+    <name>javax.jdo.option.ConnectionURL</name>
+    <value>jdbc:mysql://dx-database:3306/metastore?createDatabaseIfNotExist=true&amp;useSSL=false&amp;allowPublicKeyRetrieval=true</value>
+  </property>
+  
+  <property>
+    <name>javax.jdo.option.ConnectionDriverName</name>
+    <value>com.mysql.cj.jdbc.Driver</value>
+  </property>
+  
+  <property>
+    <name>javax.jdo.option.ConnectionUserName</name>
+    <value>hive</value>
+  </property>
+  
+  <property>
+    <name>javax.jdo.option.ConnectionPassword</name>
+    <value>${HIVE_DB_PASSWORD}</value>
+  </property>
+
+  <!-- Force MySQL Usage -->
+  <property>
+    <name>datanucleus.autoCreateSchema</name>
+    <value>true</value>
+  </property>
+  
+  <property>
+    <name>datanucleus.schema.autoCreateAll</name>
+    <value>false</value>
+  </property>
+  
+  <property>
+    <name>hive.metastore.schema.verification</name>
+    <value>true</value>
+  </property>
+
+  <!-- Enable ACID/Transactions (required for Iceberg) -->
+  <property>
+    <name>hive.support.concurrency</name>
+    <value>true</value>
+  </property>
+  
+  <property>
+    <name>hive.enforce.bucketing</name>
+    <value>true</value>
+  </property>
+  
+  <property>
+    <name>hive.exec.dynamic.partition.mode</name>
+    <value>nonstrict</value>
+  </property>
+  
+  <property>
+    <name>hive.txn.manager</name>
+    <value>org.apache.hadoop.hive.ql.lockmgr.DbTxnManager</value>
+  </property>
+
+  <property>
+    <name>hive.compactor.initiator.on</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>hive.compactor.worker.threads</name>
+    <value>1</value>
+  </property>
+
+
+  <!-- Metastore Service Configuration -->
+  <property>
+    <name>hive.metastore.uris</name>
+    <value>thrift://dx-master:9083</value>
+  </property>
+
+  <!-- Security and User Configuration -->
+  <property>
+    <name>hive.server2.enable.doAs</name>
+    <value>false</value>
+  </property>
+
+  <property>
+    <name>hadoop.proxyuser.hadoop.hosts</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.proxyuser.hadoop.groups</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.proxyuser.trino.hosts</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.proxyuser.trino.groups</name>
+    <value>*</value>
+  </property>
+
+  <!-- SPARK ENGINE CONFIGURATION -->
+  <property>
+    <name>hive.execution.engine</name>
+    <value>spark</value>
+  </property>
+
+  <!-- Spark Context Configuration -->
+  <property>
+    <name>spark.master</name>
+    <value>spark://dx-master:7077</value>
+  </property>
+
+  <property>
+    <name>spark.eventLog.enabled</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>spark.eventLog.dir</name>
+    <value>hdfs://dx-master:8020/spark-history</value>
+  </property>
+
+  <property>
+    <name>spark.serializer</name>
+    <value>org.apache.spark.serializer.JavaSerializer</value>
+  </property>
+
+  <property>
+    <name>spark.sql.session.state.builder</name>
+    <value>org.apache.spark.sql.hive.HiveSessionStateBuilder</value>
+  </property>
+
+  <!-- DISABLE KRYO COMPLETELY -->
+  <property>
+    <name>hive.spark.use.kryo.for.spark.serializer</name>
+    <value>false</value>
+  </property>
+
+  <!-- HIVE INTERNAL SERIALIZATION -->
+  <property>
+    <name>hive.internal.spark.serializer</name>
+    <value>java</value>
+  </property>
+
+  <!-- SPARK SQL SERIALIZER -->
+  <property>
+    <name>spark.sql.hadoop.io.compression.codec</name>
+    <value>org.apache.hadoop.hive.ql.io.compress.SnappyCodec</value>
+  </property>
+
+  <!-- ENSURE SPARK DOESN'T USE KRYO -->
+  <property>
+    <name>spark.kryo.registrator</name>
+    <value></value>
+  </property>
+
+  <!-- Spark Resource Configuration -->
+  <property>
+    <name>spark.executor.memory</name>
+    <value>8g</value>
+  </property>
+
+  <property>
+    <name>spark.executor.cores</name>
+    <value>2</value>
+  </property>
+
+  <property>
+    <name>spark.driver.memory</name>
+    <value>8g</value>
+  </property>
+
+  <!-- Multi-host Network Configuration -->
+  <property>
+    <name>spark.driver.host</name>
+    <value>dx-master</value>
+  </property>
+
+
+  <property>
+    <name>spark.driver.bindAddress</name>
+    <value>0.0.0.0</value>
+  </property>
+
+  <property>
+    <name>hive.server2.thrift.http.max.message.size</name>
+    <value>536870912</value>
+    <description>Maximum message size in bytes for HTTP transport (256MB)</description>
+  </property>
+
+  <property>
+    <name>hive.server2.thrift.max.message.size</name>
+    <value>536870912</value>
+    <description>Maximum message size in bytes for binary transport (256MB)</description>
+  </property>
+
+
+  <!-- Network Timeouts for Multi-host -->
+  <property>
+    <name>spark.network.timeout</name>
+    <value>600s</value>
+  </property>
+
+  <property>
+    <name>spark.rpc.askTimeout</name>
+    <value>300s</value>
+  </property>
+
+  <!-- Hive-Spark Integration -->
+  <property>
+    <name>spark.sql.catalogImplementation</name>
+    <value>hive</value>
+  </property>
+
+  <property>
+    <name>spark.sql.warehouse.dir</name>
+    <value>hdfs://dx-master:8020/user/hive/warehouse</value>
+  </property>
+
+    <!-- FIX: Remote Spark Driver Setup -->
+    <property>
+       <name>spark.remote.driver.classloader </name>
+      <value>true</value>
+    </property>
+
+    <!-- FIX: Reduce serialization complexity -->
+    <property>
+       <name>spark.rdd.compress </name>
+      <value>true</value>
+    </property>
+
+    <property>
+       <name>spark.broadcast.compress </name>
+      <value>true</value>
+    </property>
+
+    <property>
+       <name>spark.shuffle.compress </name>
+      <value>true</value>
+    </property>
+
+    <property>
+       <name>spark.shuffle.spill.compress </name>
+      <value>true</value>
+    </property>
+
+  <!-- FIX: Ensure serialized plan is readable -->
+  <property>
+     <name>hive.spark.use.openblas </name>
+    <value>false</value>
+  </property>
+
+  <!-- Kryo Serialization Optimization -->
+  <property>
+    <name>spark.kryo.unsafe</name>
+    <value>false</value>
+  </property>
+
+  <property>
+    <name>spark.kryo.referenceTracking</name>
+    <value>false</value>
+  </property>
+
+  <!-- FIX: Limit task serialization size -->
+  <property>
+     <name>spark.akka.frameSize </name>
+    <value>256</value>
+  </property>
+  
+  <!-- Result Size Management for Multi-host -->
+  <property>
+    <name>spark.driver.maxResultSize</name>
+    <value>6g</value>
+  </property>
+
+  <!-- Scratch Directory Configuration -->
+  <property>
+    <name>hive.exec.scratchdir</name>
+    <value>/tmp/hive</value>
+  </property>
+
+  <property>
+    <name>hive.start.cleanup.scratchdir</name>
+    <value>true</value>
+  </property>
+
+  <!-- ICEBERG Configuration -->
+  <property>
+    <name>iceberg.engine.hive.enabled</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>hive.load.dynamic.partitions</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>hive.load.dynamic.partitions.mode</name>
+    <value>nonstrict</value>
+  </property>
+
+  <!-- Disable problematic optimizations -->
+  <property>
+    <name>hive.vectorized.execution.enabled</name>
+    <value>false</value>
+  </property>
+
+  <property>
+    <name>hive.auto.convert.join</name>
+    <value>false</value>
+  </property>
+
+  <property>
+    <name>hive.server2.thrift.bind.host</name>
+    <value>0.0.0.0</value>
+  </property>
+
+
+</configuration>

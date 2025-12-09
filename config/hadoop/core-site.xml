@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<configuration>
+  <property>
+    <name>fs.defaultFS</name>
+    <value>hdfs://dx-master:8020</value>
+  </property>
+
+  <!-- KMS Configuration -->
+  <property>
+    <name>hadoop.security.key.provider.path</name>
+    <value>kms://http@dx-master:9600/kms</value>
+  </property>
+
+  <property>
+    <n>hadoop.security.key.provider.path</n>
+    <value>kms://http@dx-master:9600/kms</value>
+  </property>
+
+  <property>
+    <name>hadoop.proxyuser.hadoop.hosts</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.proxyuser.hadoop.groups</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.proxyuser.airflow.hosts</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.proxyuser.airflow.groups</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.proxyuser.gravitino.hosts</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.proxyuser.gravitino.groups</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.proxyuser.trino.hosts</name>
+    <value>*</value>
+  </property>
+
+  <property>
+    <name>hadoop.proxyuser.trino.groups</name>
+    <value>*</value>
+  </property>
+</configuration>
+
