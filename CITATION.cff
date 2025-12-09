@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 type: software
 title: "DX House: Unified Data Management Architecture Implementation"
-version: 1.0.0
+version: 1.33.0
 date-released: 2025-12-01
 authors:
   - family-names: "Mekled"
@@ -12,18 +12,36 @@ authors:
     email: "mahmoudhamam710@gmail.com"
 repository-code: "https://github.com/MahmoudHamam1/data-x-house"
 url: "https://github.com/MahmoudHamam1/data-x-house"
-abstract: "Implementation artifacts for Data-X-House (DX House), a comprehensive unified data management architecture that combines data lake and warehouse capabilities for on-premise big data platforms in highly regulated sectors."
+abstract: >
+  Data-X-House is a unified big data management platform that combines
+  data lake and data warehouse capabilities using containerized microservices.
+  This repository provides a production-ready implementation based on the
+  Data Lake Architecture Framework (DLAF), featuring Apache Hadoop ecosystem
+  (HDFS, Hive, Spark), Apache Iceberg for table format, Trino for query
+  execution, Apache Ranger for security, and Apache Airflow for orchestration.
+  The platform supports both on-premise and cloud deployments with enterprise-grade
+  security, governance, and compliance features suitable for highly regulated
+  sectors. Includes complete Docker-based deployment, ingestion pipelines,
+  data warehouse implementation, and visualization dashboards.
 keywords:
   - big-data
   - data-lake
   - data-warehouse
   - lakehouse
+  - data-warehouse-and-data-lake-architectures-key-features
+  - data-lake-house-architecture
+  - unified-big-data-management-architecture
+  - containers-based-big-data-platform
+  - big-data-governance
   - hadoop
   - spark
+  - iceberg
+  - trino
   - docker
   - on-premise
   - data-governance
   - security
+  - dlaf
 license: Apache-2.0
 preferred-citation:
   type: article
