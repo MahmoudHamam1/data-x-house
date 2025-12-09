@@ -12,6 +12,7 @@ authors:
     email: "mahmoudhamam710@gmail.com"
 repository-code: "https://github.com/MahmoudHamam1/data-x-house"
 url: "https://github.com/MahmoudHamam1/data-x-house"
+doi: "10.5281/zenodo.17872889"
 abstract: >
   Data-X-House is a unified big data management platform that combines
   data lake and data warehouse capabilities using containerized microservices.

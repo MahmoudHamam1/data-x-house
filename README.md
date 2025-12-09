@@ -1,7 +1,7 @@
 # DX House: Unified Data Management Architecture
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.XXXXXX-blue)](https://doi.org/10.5281/zenodo.XXXXXX)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17872889.svg)](https://doi.org/10.5281/zenodo.17872889)
 [![Journal](https://img.shields.io/badge/Journal-Big%20Data-green)](https://journalofbigdata.springeropen.com/)
 
 Implementation artifacts for **Data-X-House (DX House)**: A comprehensive, unified data management architecture that combines data lake and data warehouse capabilities for on-premise big data platforms in highly regulated sectors.
